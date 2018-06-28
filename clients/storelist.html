@@ -1,0 +1,60 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name= "viewport" content="width=device-width, initial-scale=1">
+<link rel = "stylesheet" href = "http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src = "http://code.jquery.com/jquery-1.11.3.min.js"></script> 
+<script src = "http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.css" />
+<script src="//code.jquery.com/jquery-1.6.3.min.js"></script>
+<script src="//rawgit.com/Soldier-B/jquery.toast/master/jquery.toast/jquery.toast.min.js"></script>
+<script>
+function bt(str){
+	var xmlhttp = new XMLHttpRequest();
+	$.toast.config.align ='bottom_left';
+	$.toast.config.width = 100;
+	$.toast('asdasdasdas.',{duration:2000});
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("txtHint").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST", "test2.php", true);
+	xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xmlhttp.send("q="+str);
+}
+function aaaa(aaa){
+	$.ajax({
+		url:'test2.php',
+		type:'POST',
+		data:{q:$("#inins").val()},
+		success:function (result){
+			alert("aaaa");
+		}
+	});
+}
+</script>
+</head>
+<body>
+<form action="test2.php" method="post">
+<input type="text" name="q"/>
+<button onclick='javascript:this.parentNode.submit()'>aaa</button>
+</form>
+<form action="test2.php" method="post">
+<input type="text" name="q"/>
+<input type="submit" value='hi'/>
+</form>
+<form action="test2.php" method="post">
+	<input name="q" type="hidden" value ='12'/>
+	<div style = "background-color:black" name="bbb" id="aaa" onclick='javascript:this.parentNode.submit()'>
+	aaaaa
+	</div>
+</form>
+<form action="test2.php" method="post">
+        <div style="background-color:black;" name="bbb" id="aaa" onclick='javascript:this.parentNode.submit()'>
+        <input name="q" type="hidden" value ='11'/>
+        <h4>aaaaa</h4>
+        </div>
+</form>
+</body>
+</html> 
